@@ -21,7 +21,7 @@ case $CONFIG in
 esac
 
 
-GPUS=${GPUS:-4}
+GPUS=${GPUS:-8}
 IMGS_PER_GPU=${IMGS_PER_GPU:-2}
 
 PORT=${PORT:-29504}

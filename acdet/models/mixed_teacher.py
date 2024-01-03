@@ -372,11 +372,13 @@ class MixedTeacher(MultiSteamDetector):
         all_scores = all_scores.detach().cpu().numpy()
 
         res = []
+        merged_bboxes = merged_bboxes.detach().cpu()
+        merged_labels = merged_labels.detach().cpu()
         for box_idx, box in enumerate(merged_bboxes):
             res_box = dict(
                 bbox=box[:4],
-                score=float(box[4].detach().cpu()),
-                category_id=int(merged_labels[box_idx].detach().cpu()),
+                score=float(box[4]),
+                category_id=int(merged_labels[box_idx]),
                 score_cls=all_scores[box_idx, 0],
                 score_reg=all_scores[box_idx, 1],
                 )
